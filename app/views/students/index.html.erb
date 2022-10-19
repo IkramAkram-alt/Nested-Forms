@@ -1,0 +1,57 @@
+<p style="color: green"><%= notice %></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-12 mx-md auto">
+      <h1> Students</h1>
+      <div id='student_id'>
+      <table class= 'table table-dark'>
+        <thead>
+          <tr>
+            <th scope="col">Student Name</th>
+            <th scope="col">Student Day of Birth </th>
+            <th scope="col">Student Address</th>
+            <th scope="col">Student Courses</th>
+            <th scope="col">Available Teacher for chosen courses</th>
+            
+          </tr>
+        </thead>
+        <tbody>      
+        <% @students.each do |student|%>
+         <tr>
+          <td><%= student.s_name%></td> 
+          <td> <%= student.s_dob%></td>
+          <td> <%= student.s_address%></td> 
+          <td>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              Courses
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <% student.courses.each do |s|%>
+              <li><%=s.c_name%></li>
+            <%end%>
+            </ul>
+          </div>
+          </td>
+          <td>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              Courses
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <% student.teachers.each do |t|%>
+              <li><%=t.t_name%></li>
+            <%end%>
+            </ul>
+          </div>
+          </td>
+         </tr>                  
+        <% end %>
+        </table>
+      </div>
+      <%=link_to 'Add Student', new_student_path %> |
+      <%=link_to 'Add Teacher', new_teacher_path %>
+    </div>
+  </div>

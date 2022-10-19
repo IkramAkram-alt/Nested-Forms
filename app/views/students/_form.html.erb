@@ -1,0 +1,15 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-12 mx-md auto">
+     <div class= 'form-control'>
+      <%= simple_form_for @student do |f| %>
+        <%= f.input :s_name, label: 'Student Name' %>
+          <%= f.input :s_dob , as: :date, start_year: Date.today.year - 30, end_year: Date.today.year - 15,label: 'Student Day of Birth'%>
+          <%= f.input :s_address, label: 'Student Addrress' %>
+          <%= f.association :courses, label_method: :c_name, value_method: :id, include_blank: false,multilple: true %>
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
